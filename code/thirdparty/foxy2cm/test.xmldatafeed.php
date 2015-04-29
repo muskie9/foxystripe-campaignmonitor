@@ -16,8 +16,8 @@
 // Set the key you entered in your FoxyCart.com admin.
 // Modify the XML below as necessary.  DO NOT modify the structure, just the data
 // ======================================================================================
-$myURL = 'http://localhost/~fred/foxy2cm/fc-campaignmonitor.php';
-$myKey = 'CHANGE THIS TEXT to your own datafeed keyphrase';
+$myURL = Director::baseURL().'foxystripe-campaignmonitor/CampaignMonitorHook/';
+$myKey = SiteConfig::current_site_config()->StoreKey;
 
 // This is FoxyCart Version 0.6 XML.  See http://wiki.foxycart.com/docs:datafeed?s[]=xml
 $XMLOutput = <<<XML
@@ -129,7 +129,6 @@ XML;
 // ENCRYPT YOUR XML
 // Modify the include path to go to the rc4crypt file.
 // ======================================================================================
-include 'class.rc4crypt.php';
 $XMLOutput_encrypted = rc4crypt::encrypt($myKey,$XMLOutput);
 $XMLOutput_encrypted = urlencode($XMLOutput_encrypted);
 
@@ -149,4 +148,4 @@ curl_close($ch);
 header("content-type:text/plain");
 print $response;
 
-?>
+

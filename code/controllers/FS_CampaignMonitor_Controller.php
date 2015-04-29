@@ -36,7 +36,6 @@ class FS_CampaignMonitor_Controller extends ContentController {
             die($errstr);
             return true;
         }
-        set_error_handler(fatal_error_handler);
 
         $FoxyData = rc4crypt::decrypt($key, urldecode($_POST["FoxyData"]));
 
@@ -55,7 +54,7 @@ class FS_CampaignMonitor_Controller extends ContentController {
             }
 
             if ($subscribe) {
-                subscribe_user_to_list(// See CampaignMonitorUtils.php for documentation.
+                $this->subscribe_user_to_list(// See CampaignMonitorUtils.php for documentation.
                     array('first_name' => $tx->customer_first_name[0]->tagData,
                         'last_name' => $tx->customer_last_name[0]->tagData,
                         'email' => $tx->customer_email[0]->tagData),
