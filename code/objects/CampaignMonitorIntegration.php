@@ -30,7 +30,7 @@ class CampaignMonitorIntegration extends FoxyStripeIntegrationsObject {
 	public function getCMSFields(){
 		$fields = parent::getCMSFields();
 
-        $fields->removeByName('URL');
+        //$fields->removeByName('URL');
 
         $fields->addFieldToTab(
             'Root.Main',
@@ -48,8 +48,13 @@ class CampaignMonitorIntegration extends FoxyStripeIntegrationsObject {
 		$this->extend('updateCMSFields', $fields);
 		return $fields;
 	}
-	
-	public function validate(){
+
+    /*public function getIntegrationURL(){
+        return Director::baseURL().FS_CampaignMonitor_Controller::getFSCMURLSegment().'/CampaignMonitorHook/';
+    }*/
+
+
+    public function validate(){
 		$result = parent::validate();
 
 		/*if($this->Country == 'DE' && $this->Postcode && strlen($this->Postcode) != 5) {
