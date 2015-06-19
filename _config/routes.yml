@@ -1,0 +1,7 @@
+---
+Name: foxystripe-campaignmonitorroutes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    'Foxy2CM//$Action/$ID/$Name': 'Foxy2CM_Controller'
